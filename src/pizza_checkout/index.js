@@ -20,6 +20,14 @@ class PizzaCheckout extends Component {
 
     return map(this.props.pizzas, (pizza, index) => {
       console.log(pizza)
+
+      const selected = map(pizza.toppings, t => {
+
+        if (t.selected) {
+          return t.name
+        }
+      })
+
       return (
         <div key={index}>
           <div>{pizza.name} pizza</div>
@@ -27,8 +35,8 @@ class PizzaCheckout extends Component {
           <CheckBoxGroup
             checkBoxLimit={pizza.maxToppings}
             pizzaIndex={index}
-            checkBoxItems={['pepperoni', 'extra cheese', 'pineapple']}
-            selected={pizza.toppings}
+            checkBoxItems={pizza.toppings}
+            selected={selected}
             handlers={{
               addTopping: this.props.addTopping,
               removeTopping: this.props.removeTopping
