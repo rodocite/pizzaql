@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {map} from 'lodash'
 import {connect} from 'react-redux'
+import {formatMoney} from 'accounting'
+
 import {userAddPizza, removePizza, addTopping, removeTopping} from './state/actions'
 import CheckBoxGroup from './presentation/checkbox_group'
 
@@ -29,7 +31,7 @@ class PizzaCheckout extends Component {
 
       return (
         <div key={index}>
-          <div>{pizza.name} pizza</div>
+          <div>{pizza.name} pizza - {formatMoney(pizzaFullPrice)}</div>
           <button onClick={this.handleRemovePizza(index)}>Remove</button>
           <CheckBoxGroup
             checkBoxLimit={pizza.maxToppings}

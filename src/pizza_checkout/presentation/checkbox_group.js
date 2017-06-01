@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types'
 import {map} from 'lodash'
+import {formatMoney} from 'accounting'
 
 class CheckBoxGroup extends Component {
 
@@ -48,7 +49,7 @@ class CheckBoxGroup extends Component {
           <label
             style={this.props.checkBoxLimit !== null && selected.length >= this.props.checkBoxLimit ? {color: 'gray'} : {color: 'black'}} 
           >
-            {item.name} {item.price}
+            {item.name} {formatMoney(item.price)}
           </label>
         </div>
       )
