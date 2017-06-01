@@ -21,21 +21,22 @@ class CheckBoxGroup extends Component {
       if (this.props.checkBoxLimit !== null && this.props.selected.length >= this.props.checkBoxLimit) {
         return null
       }
-      this.props.handlers.addTopping(this.props.pizzaIndex, name)
+      this.props.handlers.addTopping(this.props.pizzaIndex, event.target.dataset.index)
     } else {
-      this.props.handlers.removeTopping(this.props.pizzaIndex, name)
+      this.props.handlers.removeTopping(this.props.pizzaIndex, event.target.dataset.index)
     }
   }
 
   renderCheckBoxes () {
 
     const {selected} = this.props
-
-    return map(this.props.checkBoxItems, item => {
+    
+    return map(this.props.checkBoxItems, (item, index) => {
 
       return (
         <div key={item.name}>
           <input
+            data-index={index}
             type="checkbox" 
             name={item.name} 
             value={item.name}
