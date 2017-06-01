@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {map} from 'lodash'
+import React, { Component } from 'react'
+import {map, compact, reduce} from 'lodash'
 import {connect} from 'react-redux'
 import {formatMoney} from 'accounting'
 
@@ -22,12 +22,13 @@ class PizzaCheckout extends Component {
 
     return map(this.props.pizzas, (pizza, index) => {
 
-      const selected = map(pizza.toppings, t => {
+      const selected = compact(map(pizza.toppings, t => {
 
         if (t.selected) {
           return t.name
         }
-      })
+      }))
+
 
       return (
         <div key={index}>
