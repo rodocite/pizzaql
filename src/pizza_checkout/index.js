@@ -51,7 +51,7 @@ class PizzaCheckout extends Component {
   render() {
 
     return (
-      <div className="App">
+      <div>
         <button onClick={this.handleAddPizza('small')}>Add Small Pizza</button>
         <button onClick={this.handleAddPizza('medium')}>Add Medium Pizza</button>
         <button onClick={this.handleAddPizza('large')}>Add Large Pizza</button>
