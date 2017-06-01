@@ -11,10 +11,6 @@ class CheckBoxGroup extends Component {
     pizzaIndex: PropTypes.number
   }
 
-  static defaultProps = {
-    selected: []
-  }
-
   handleInputChange = (event) => {
 
     const target = event.target
