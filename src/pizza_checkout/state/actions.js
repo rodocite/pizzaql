@@ -1,6 +1,6 @@
 import ApolloClient, {createNetworkInterface} from 'apollo-client'
 import gql from 'graphql-tag'
-import {find} from 'lodash'
+import {find, map} from 'lodash'
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -76,7 +76,20 @@ export function userAddPizza (type) {
     .then(data => {
 
       const pizza = find(data.data.pizzaSizes, pizzaSize => pizzaSize.name === type)
-      dispatch(addPizza(pizza))
+      
+      dispatch(addPizza({
+        name: pizza.name,
+        maxToppings: pizza.maxToppings,
+        price: pizza.basePrice,
+        toppings: map(pizza.toppings, t => {
+          
+          return {
+            selected: t.defaultSelected,
+            name: t.topping.name,
+            price: t.topping.price
+          }
+        })
+      }))
     })
   }
 }
