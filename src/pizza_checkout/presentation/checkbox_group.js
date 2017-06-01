@@ -37,18 +37,18 @@ class CheckBoxGroup extends Component {
     return map(this.props.checkBoxItems, item => {
 
       return (
-        <div key={item}>
+        <div key={item.name}>
           <input
             type="checkbox" 
-            name={item} 
-            value={item}
-            checked={selected.indexOf(item) > -1}
+            name={item.name} 
+            value={item.name}
+            checked={selected.indexOf(item.name) > -1}
             onChange={this.handleInputChange}
           />
           <label
             style={this.props.checkBoxLimit !== null && selected.length >= this.props.checkBoxLimit ? {color: 'gray'} : {color: 'black'}} 
           >
-            {item}
+            {item.name} {item.price}
           </label>
         </div>
       )
