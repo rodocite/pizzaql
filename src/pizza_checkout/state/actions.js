@@ -29,24 +29,24 @@ export function removePizza (index) {
   }
 }
 
-export function addTopping (pizzaIndex, topping) {
+export function addTopping (pizzaIndex, toppingIndex) {
 
   return {
     type: ADD_TOPPING,
     payload: {
       pizzaIndex,
-      topping
+      toppingIndex
     }
   }
 }
 
-export function removeTopping (pizzaIndex, topping) {
+export function removeTopping (pizzaIndex, toppingIndex) {
 
   return {
     type: REMOVE_TOPPING,
     payload: {
       pizzaIndex,
-      topping
+      toppingIndex
     }
   }
 }
