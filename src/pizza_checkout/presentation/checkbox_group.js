@@ -15,7 +15,6 @@ class CheckBoxGroup extends Component {
 
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
-    const name = target.name
 
     if (value) {
       if (this.props.checkBoxLimit !== null && this.props.selected.length >= this.props.checkBoxLimit) {

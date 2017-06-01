@@ -40,7 +40,7 @@ class PizzaCheckout extends Component {
       }, pizza.price)
 
       return (
-        <div key={index}>
+        <div key={index} style={{marginBottom: 20}}>
           <div>{pizza.name} pizza - {formatMoney(pizzaFullPrice)}</div>
           <button onClick={this.handleRemovePizza(index)}>Remove</button>
           <CheckBoxGroup
@@ -62,6 +62,7 @@ class PizzaCheckout extends Component {
 
     return (
       <div>
+        <div>Due at checkout - {formatMoney(this.props.statement)}</div>
         <button onClick={this.handleAddPizza('small')}>Add Small Pizza</button>
         <button onClick={this.handleAddPizza('medium')}>Add Medium Pizza</button>
         <button onClick={this.handleAddPizza('large')}>Add Large Pizza</button>
@@ -73,8 +74,25 @@ class PizzaCheckout extends Component {
 
 function mapStateToProps(state) {
 
+  const statement = reduce(state.pizzas, (invoice, pizza) => {
+
+    const pizzaPrice = reduce(pizza.toppings, (acc, topping) => {
+
+      if (topping.selected) {
+        acc = acc + topping.price
+      }
+
+      return acc
+    }, pizza.price)
+    
+    invoice = invoice + pizzaPrice
+
+    return invoice
+  }, 0)
+
   return {
-    pizzas: state.pizzas
+    pizzas: state.pizzas,
+    statement
   }
 }
 
