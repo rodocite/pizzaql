@@ -19,7 +19,6 @@ class PizzaCheckout extends Component {
   renderPizzas () {
 
     return map(this.props.pizzas, (pizza, index) => {
-      console.log(pizza)
 
       const selected = map(pizza.toppings, t => {
 
