@@ -25,10 +25,19 @@ class PizzaCheckout extends Component {
       const selected = compact(map(pizza.toppings, t => {
 
         if (t.selected) {
+
           return t.name
         }
       }))
 
+      const pizzaFullPrice = reduce(pizza.toppings, (acc, topping) => {
+
+        if (topping.selected) {
+          acc = acc + topping.price
+        }
+
+        return acc
+      }, pizza.price)
 
       return (
         <div key={index}>
