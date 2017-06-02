@@ -14,7 +14,6 @@ export const ADD_TOPPING = 'ADD_TOPPING'
 export const REMOVE_TOPPING = 'REMOVE_TOPPING'
 
 export function addPizza (attributes = {}) {
-
   return { 
     type: ADD_PIZZA,
     payload: attributes
@@ -22,7 +21,6 @@ export function addPizza (attributes = {}) {
 }
 
 export function removePizza (index) {
-
   return { 
     type: REMOVE_PIZZA,
     payload: index
@@ -30,7 +28,6 @@ export function removePizza (index) {
 }
 
 export function addTopping (pizzaIndex, toppingIndex) {
-
   return {
     type: ADD_TOPPING,
     payload: {
@@ -41,7 +38,6 @@ export function addTopping (pizzaIndex, toppingIndex) {
 }
 
 export function removeTopping (pizzaIndex, toppingIndex) {
-
   return {
     type: REMOVE_TOPPING,
     payload: {
@@ -52,9 +48,7 @@ export function removeTopping (pizzaIndex, toppingIndex) {
 }
 
 export function userAddPizza (type) {
-
   return dispatch => {
-
     client.query({
       query: gql`
         query {

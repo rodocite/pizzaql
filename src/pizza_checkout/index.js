@@ -9,29 +9,22 @@ import CheckBoxGroup from './presentation/checkbox_group'
 class PizzaCheckout extends Component {
 
   handleAddPizza = (size) => {
-
     return () => this.props.userAddPizza(size)
   }
 
   handleRemovePizza = (index) => {
-   
     return () => this.props.removePizza(index)
   }
 
   renderPizzas () {
-
     return map(this.props.pizzas, (pizza, index) => {
-
       const selected = compact(map(pizza.toppings, t => {
-
         if (t.selected) {
-
           return t.name
         }
       }))
 
       const pizzaFullPrice = reduce(pizza.toppings, (acc, topping) => {
-
         if (topping.selected) {
           acc = acc + topping.price
         }
@@ -59,7 +52,6 @@ class PizzaCheckout extends Component {
   }
 
   render() {
-
     return (
       <div>
         <div>Due at checkout - {formatMoney(this.props.statement)}</div>
@@ -73,9 +65,7 @@ class PizzaCheckout extends Component {
 }
 
 function mapStateToProps(state) {
-
   const statement = reduce(state.pizzas, (invoice, pizza) => {
-
     const pizzaPrice = reduce(pizza.toppings, (acc, topping) => {
 
       if (topping.selected) {
