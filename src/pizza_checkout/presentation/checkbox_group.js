@@ -12,7 +12,6 @@ class CheckBoxGroup extends Component {
   }
 
   handleInputChange = (event) => {
-
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
 
@@ -27,7 +26,6 @@ class CheckBoxGroup extends Component {
   }
 
   renderCheckBoxes () {
-
     const {selected} = this.props
     
     return map(this.props.checkBoxItems, (item, index) => {
@@ -53,7 +51,6 @@ class CheckBoxGroup extends Component {
   }
 
   render() {
-    
     return (
       <div>
         {this.renderCheckBoxes()}
